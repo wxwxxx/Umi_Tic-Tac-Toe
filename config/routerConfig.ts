@@ -12,16 +12,10 @@ export default [
     routes: [
       {
         path: '/',
-        component: '@/layouts/HeaderLayout',
-        routes: [
-          {
-            path: '/',
-            component: '@/pages/index.tsx',
-          },
-          {
-            component: '404',
-          },
-        ],
+        component: '@/pages/index.tsx',
+      },
+      {
+        component: '404',
       },
     ],
   },
