@@ -62,7 +62,7 @@ const IndexPage: React.FC<{}> = () => {
 
   const Square = (square_props: any) => {
     return (
-      <button className="square" onClick={square_props.onClick}>
+      <button id={`button_${square_props.pos}`} className="square" onClick={square_props.onClick}>
         {square_props.value}
       </button>
     );
@@ -72,19 +72,19 @@ const IndexPage: React.FC<{}> = () => {
     return (
       <div className={style.main_body}>
         <div className="board-row">
-          <Square value={_squares[0]} onClick={() => onClick(0)} />
-          <Square value={_squares[1]} onClick={() => onClick(1)} />
-          <Square value={_squares[2]} onClick={() => onClick(2)} />
+          <Square pos={0} value={_squares[0]} onClick={() => onClick(0)} />
+          <Square pos={1} value={_squares[1]} onClick={() => onClick(1)} />
+          <Square pos={2} value={_squares[2]} onClick={() => onClick(2)} />
         </div>
         <div className="board-row">
-          <Square value={_squares[3]} onClick={() => onClick(3)} />
-          <Square value={_squares[4]} onClick={() => onClick(4)} />
-          <Square value={_squares[5]} onClick={() => onClick(5)} />
+          <Square pos={3} value={_squares[3]} onClick={() => onClick(3)} />
+          <Square pos={4} value={_squares[4]} onClick={() => onClick(4)} />
+          <Square pos={5} value={_squares[5]} onClick={() => onClick(5)} />
         </div>
         <div className="board-row">
-          <Square value={_squares[6]} onClick={() => onClick(6)} />
-          <Square value={_squares[7]} onClick={() => onClick(7)} />
-          <Square value={_squares[8]} onClick={() => onClick(8)} />
+          <Square pos={6} value={_squares[6]} onClick={() => onClick(6)} />
+          <Square pos={7} value={_squares[7]} onClick={() => onClick(7)} />
+          <Square pos={8} value={_squares[8]} onClick={() => onClick(8)} />
         </div>
       </div>
     );
@@ -103,7 +103,9 @@ const IndexPage: React.FC<{}> = () => {
     const desc = move ? `Go to move #${move}` : 'Go to game start';
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{desc}</button>
+        <button id={move ? `GoToMove#${move}` : 'GoToGameStart'} onClick={() => jumpTo(move)}>
+          {desc}
+        </button>
       </li>
     );
   });
@@ -115,7 +117,7 @@ const IndexPage: React.FC<{}> = () => {
         {Board(current.squares, (i: any) => handleClick(i))}
       </div>
       <div className="game-info">
-        <div>{status}</div>
+        <div id="status">{status}</div>
         <ol>{moves}</ol>
       </div>
     </div>
